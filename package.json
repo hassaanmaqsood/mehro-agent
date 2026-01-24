@@ -1,0 +1,17 @@
+{
+  "name": "ssv-agent",
+  "version": "1.0.0",
+  "description": "SSV Framework AI Agent with local models",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": ["ai", "agent", "ssv", "llama"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-llama-cpp": "^3.0.0"
+  }
+}

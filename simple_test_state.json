@@ -1,0 +1,37 @@
+{
+  "taskList": [
+    "What is the capital of France?"
+  ],
+  "verifiedFacts": {
+    "knowledge_capital_of_france": {
+      "value": "Paris",
+      "source": "search_knowledge",
+      "timestamp": "2026-01-21T20:03:07.621Z"
+    }
+  },
+  "taskDecomposition": {},
+  "completedTasks": [
+    {
+      "taskId": "task_1",
+      "result": "Paris",
+      "timestamp": "2026-01-21T20:03:07.622Z"
+    }
+  ],
+  "executionLog": [
+    {
+      "action": "FUNCTION_CALL",
+      "details": {
+        "function": "search_knowledge",
+        "parameters": {
+          "query": "capital of France"
+        },
+        "result": "success"
+      },
+      "timestamp": "2026-01-21T20:03:07.622Z"
+    }
+  ],
+  "lowConfidenceItems": [],
+  "currentTaskIndex": 0,
+  "createdAt": "2026-01-21T20:02:13.565Z",
+  "lastUpdated": "2026-01-21T20:03:07.621Z"
+}
