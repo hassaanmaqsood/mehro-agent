@@ -1,0 +1,29 @@
+{
+  "name": "mehro-agent",
+  "version": "1.0.0",
+  "description": "SSV Framework AI Agent",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "ssv",
+    "llama",
+    "google-genai",
+    "dotenv",
+    "zod",
+    "mehro"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^1.38.0",
+    "dotenv": "^17.2.3",
+    "node-llama-cpp": "^2.3.2",
+    "zod": "^4.3.6"
+  }
+}
