@@ -19,37 +19,37 @@ An AI agent powered by **Google Gemini** that generates and executes Directed Ac
 │                     Mehro Agent                         │
 ├─────────────────────────────────────────────────────────┤
 │                                                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
-│  │  TASK QUEUE  │  │  RATE LIMITS │  │  VALIDATION  │ │
-│  │              │  │              │  │              │ │
-│  │ Maintain     │  │ API quota    │  │ JSON Schema  │ │
-│  │ pending      │  │ management   │  │ + Zod        │ │
-│  │ tasks        │  │ w/ safety    │  │ schemas      │ │
-│  └──────────────┘  └──────────────┘  └──────────────┘ │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
+│  │  TASK QUEUE  │  │  RATE LIMITS │  │  VALIDATION  │   │
+│  │              │  │              │  │              │   │
+│  │ Maintain     │  │ API quota    │  │ JSON Schema  │   │
+│  │ pending      │  │ management   │  │ + Zod        │   │
+│  │ tasks        │  │ w/ safety    │  │ schemas      │   │
+│  └──────────────┘  └──────────────┘  └──────────────┘   │
 │       │                   │                   │         │
 │       └───────────────────┼───────────────────┘         │
 │                           │                             │
-│                ┌──────────▼──────────┐                 │
-│                │  TASK EXECUTOR      │                 │
-│                │                     │                 │
-│                │ • Parse LLM output  │                 │
-│                │ • Build DAG         │                 │
-│                │ • Execute steps     │                 │
-│                │ • Handle retries    │                 │
-│                └──────────┬──────────┘                 │
+│                ┌──────────▼──────────┐                  │
+│                │  TASK EXECUTOR      │                  │
+│                │                     │                  │
+│                │ • Parse LLM output  │                  │
+│                │ • Build DAG         │                  │
+│                │ • Execute steps     │                  │
+│                │ • Handle retries    │                  │
+│                └──────────┬──────────┘                  │
 │                           │                             │
-│              ┌────────────┴────────────┐               │
-│              │                         │                │
-│         ┌────▼─────┐            ┌─────▼─────┐         │
-│         │  GEMINI  │            │  FUNCTIONS│         │
-│         │  API     │            │           │         │
-│         │          │            │ • log     │         │
-│         │ 2.5      │            │ • calc    │         │
-│         │ Flash    │            │ • files   │         │
-│         └──────────┘            │ • http    │         │
-│                                 │ • string  │         │
-│                                 │ • delay   │         │
-│                                 └───────────┘         │
+│              ┌────────────┴───────────┐                 │
+│              │                        │                 │
+│         ┌────▼─────┐            ┌─────▼─────┐           │
+│         │  GEMINI  │            │  FUNCTIONS│           │
+│         │  API     │            │           │           │
+│         │          │            │ • log     │           │
+│         │ 2.5      │            │ • calc    │           │
+│         │ Flash    │            │ • files   │           │
+│         └──────────┘            │ • http    │           │
+│                                 │ • string  │           │
+│                                 │ • delay   │           │
+│                                 └───────────┘           │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -64,7 +64,7 @@ An AI agent powered by **Google Gemini** that generates and executes Directed Ac
 ### Setup
 
 ```bash
-cd mehro-bot
+cd mehro-agent
 npm install
 ```
 
@@ -122,7 +122,7 @@ This will execute the agent with the default task queue. Edit the task definitio
 ## Project Structure
 
 ```
-mehro-bot/
+mehro-agent/
 ├── index.js          # Main agent with task queue and executor
 ├── package.json      # Dependencies and scripts
 ├── .env              # Environment variables (GEMINI_API_KEY)
