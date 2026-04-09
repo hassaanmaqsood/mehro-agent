@@ -1,6 +1,7 @@
 /models
 /output
-
+/outputs
+/inbox
 
 # Logs
 logs
