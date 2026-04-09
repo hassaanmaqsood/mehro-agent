@@ -2,6 +2,7 @@
 /output
 /outputs
 /inbox
+/history.json
 
 # Logs
 logs

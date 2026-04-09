@@ -1,6 +1,6 @@
-# Mehro Local Agent
+# Mehro Agent Local
 
-Mehro Local Agent is a tool for executing tasks locally using Ollama. It uses Directed Acyclic Graphs (DAGs) to process multi-step requests.
+Mehro Agent Local is a tool for executing tasks locally using Ollama. It uses Directed Acyclic Graphs (DAGs) to process multi-step requests.
 
 ## Features
 
