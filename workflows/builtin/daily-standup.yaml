@@ -1,0 +1,23 @@
+name: daily-standup
+version: 1.0.0
+description: Fetches open tasks, summarizes progress, and logs standup notes
+trigger:
+  slash: /standup
+  schedule: '0 9 * * 1-5'
+  webhook: standup.requested
+inputs:
+  - name: team
+    type: string
+    default: engineering
+    required: false
+  - name: notes
+    type: string
+    required: false
+graph: |
+  graph workflows/daily-standup
+  node list @tools/tasks/task-list:1.0.0
+  node log @tools/core/log:1.0.0
+    state message = "Standup completed successfully"
+  node sink @flow/merge:1.0.0
+  list -> log
+  log -> sink

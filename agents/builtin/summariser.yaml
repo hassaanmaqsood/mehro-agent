@@ -1,0 +1,20 @@
+name: summariser
+version: 1.0.0
+description: Summariser agent — condenses long outputs and execution logs
+
+model:
+  provider: ollama
+  model: tinyllama:1.1b
+  temperature: 0.2
+  contextBudget: 8000
+
+tools:
+  allow: [string-transform, log]
+  disabled: [shell, write-file]
+
+approvalMode: auto
+maxTurns: 3
+
+system: |
+  You are an expert summariser. Condense the input into concise, high-signal
+  bullet points. Keep facts and key metrics, drop extraneous prose.

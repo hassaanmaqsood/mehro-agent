@@ -1,0 +1,11 @@
+name: shell-allowlist
+version: 1.0.0
+hook: pre-tool
+tool: shell
+priority: 900
+action: block
+condition:
+  field: input.command
+  op: shell-not-allowed
+  value: true
+message: "Shell command not in allowlist or matches blocklist."

@@ -1,0 +1,11 @@
+name: pii-output-scan
+version: 1.0.0
+hook: pre-output
+tool: "*"
+priority: 800
+action: warn
+condition:
+  field: output
+  op: contains-pii
+  value: true
+message: "Unmasked PII detected in output payload."

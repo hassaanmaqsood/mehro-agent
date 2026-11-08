@@ -1,0 +1,33 @@
+name: researcher
+version: 1.0.0
+description: Deep research agent — searches, fetches, synthesises sources
+
+model:
+  provider: ollama
+  model: tinyllama:1.1b
+  temperature: 0.3
+  contextBudget: 12000
+
+tools:
+  allow: [web-search, http-request, read-file]
+  disabled: [shell, write-file]
+
+skills:
+  active: [web-researcher]
+
+rules:
+  - name: no-writes
+    hook: pre-tool
+    tool: write-file
+    action: block
+    condition: true
+
+approvalMode: auto
+maxTurns: 10
+timeout: 120000
+
+system: |
+  You are a deep research specialist. Given a query, you search multiple
+  sources, fetch primary documents, and return a structured report with
+  citations. Never fabricate sources. If you cannot find reliable information,
+  say so explicitly.

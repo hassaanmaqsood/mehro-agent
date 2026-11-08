@@ -1,0 +1,11 @@
+name: api-scope-check
+version: 1.0.0
+hook: pre-tool
+tool: "*"
+priority: 990
+action: block
+condition:
+  field: state.callerScopes
+  op: scope-insufficient
+  value: true
+message: "Caller scope insufficient for tool execution."

@@ -1,0 +1,11 @@
+name: max-recursion-depth
+version: 1.0.0
+hook: pre-plan
+tool: recursive-agent
+priority: 950
+action: block
+condition:
+  field: state.depth
+  op: greater-than
+  value: "{{config.recursiveAgent.maxDepth}}"
+message: "Max recursion depth exceeded for agent."

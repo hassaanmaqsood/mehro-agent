@@ -1,0 +1,116 @@
+# Mehro Agent v2 Configuration
+# Single source of truth for runtime tunables
+
+runtime:
+  port: 3030
+  wsEnabled: true
+  logLevel: info           # debug | info | warn | error
+  workspaceDir: ./workspace
+  dbPath: ./data/mehro.db
+
+model:
+  provider: ollama         # openai | anthropic | ollama | registered adapter
+  model: tinyllama:1.1b
+  temperature: 0.2
+  contextBudget: 8000      # tokens reserved for context
+
+security:
+  approvalMode: auto       # review | auto | allow-all
+  shellAllowlist:          # explicit allowlist; empty = all denied
+    - git
+    - npm
+    - node
+    - ls
+    - cat
+    - echo
+    - pwd
+  shellBlocklist:          # always denied even if in allowlist
+    - rm -rf
+    - mkfs
+    - shutdown
+    - reboot
+  requireConfirmation: true
+  apiKeys:                 # hashed API keys for HTTP API
+    - name: ci-runner
+      hash: sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      scopes:
+        - run
+        - read
+
+webhooks:
+  enabled: true
+  events:
+    - task.completed
+    - task.failed
+    - agent.run.started
+    - agent.run.completed
+  endpoints: []
+
+query:
+  defaultBackend: sqlite   # sqlite | elasticsearch | postgres
+  backends:
+    elasticsearch:
+      url: env:ES_URL
+    postgres:
+      url: env:PG_URL
+
+privacy:
+  enabled: true
+  patterns:
+    - name: internal_id
+      regex: 'EMP-[0-9]{6}'
+
+tasks:
+  namespace: tasks
+  maxPerUser: 500
+
+recursiveAgent:
+  maxDepth: 3
+
+skills:
+  dirs:
+    - ./skills/builtin
+    - ./skills/user
+  autoActivate: true
+  maxActive: 3
+  hotReload: true
+
+rules:
+  dirs:
+    - ./rules/builtin
+    - ./rules/user
+  strict: true
+
+workflows:
+  dirs:
+    - ./workflows/builtin
+    - ./workflows/user
+  hotReload: true
+  history:
+    maxRuns: 1000
+    retentionDays: 90
+  scheduler:
+    enabled: true
+    timezone: UTC
+
+agents:
+  dirs:
+    - ./agents/builtin
+    - ./agents/user
+  hotReload: true
+  maxDepth: 3
+  maxConcurrent: 5
+  ephemeralStore: true
+  inheritRules:
+    - path-sandbox
+    - pii-output-scan
+    - api-scope-check
+
+promptFiles:
+  enabled: true
+  watch: true
+  strict: false
+  globalDir: ~/.mehro
+
+mcp:
+  servers: []

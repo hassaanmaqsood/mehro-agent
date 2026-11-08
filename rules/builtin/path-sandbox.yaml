@@ -1,0 +1,11 @@
+name: path-sandbox
+version: 1.0.0
+hook: pre-tool
+tool: "*"
+priority: 1000
+action: block
+condition:
+  field: input.path
+  op: not-starts-with
+  value: "{{config.runtime.workspaceDir}}"
+message: "Path outside workspace sandbox blocked by policy."

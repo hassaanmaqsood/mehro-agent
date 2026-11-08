@@ -3,6 +3,10 @@
 /outputs
 /inbox
 /history.json
+/data
+*.db
+*.db-shm
+*.db-wal
 
 # Logs
 logs
